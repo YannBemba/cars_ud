@@ -1,8 +1,29 @@
 import 'package:cars_ud/presentation/pages/login/login_page.dart';
+import 'package:cars_ud/presentation/pages/profile/profile_page.dart';
+import 'package:cars_ud/utils/services/auth_service.dart';
+import 'package:cars_ud/wrapper.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const CarsUDApp());
+import 'config/colors.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(
+    MultiProvider(
+      providers: [
+        StreamProvider.value(
+          initialData: null,
+          value: AuthService().user,
+        ),
+      ],
+      child: const Wrapper(),
+    ),
+  );
 }
 
 class CarsUDApp extends StatelessWidget {
@@ -10,10 +31,19 @@ class CarsUDApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'CarsUD',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Wrapper(),
+        '/profile': (context) => const ProfilePage()
+      },
+      theme: ThemeData(
+        primaryColor: MyColor.WHITE_COLOR,
+        textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme,),
+        appBarTheme: const AppBarTheme(backgroundColor: MyColor.WHITE_COLOR)
+      ),
     );
   }
 }
