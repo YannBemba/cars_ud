@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1063775676875",
+    "project_id": "carsud-11d0e",
+    "storage_bucket": "carsud-11d0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063775676875:android:a8e86da0c1a983e514ae4e",
+        "android_client_info": {
+          "package_name": "com.carsud.cars_ud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063775676875-b1chocsfpha7t6rom8h31bhvhho4onqf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carsud.cars_ud",
+            "certificate_hash": "7376eeacaf7aec5db67115140c580bdf16671e36"
+          }
+        },
+        {
+          "client_id": "1063775676875-rnl0ck45j5tn3fv3g52eqhs48hac6p48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ_y6M5HywbXnmvUW1zV-Zf7HVXNYyAlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063775676875-rnl0ck45j5tn3fv3g52eqhs48hac6p48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
