@@ -1,5 +1,6 @@
 import 'package:cars_ud/config/colors.dart';
 import 'package:cars_ud/data/models/car.dart';
+import 'package:cars_ud/presentation/widgets/my_favorite_badge.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -16,19 +17,24 @@ class MyCarFeed extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 0.35,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 8.0,
-          ),
-          decoration: BoxDecoration(
-            color: MyColor.GREY_COLOR,
-            borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-            image: DecorationImage(
-              image: NetworkImage(car!.carUrlImg!),
-              fit: BoxFit.cover,
+        Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.35,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+              ),
+              decoration: BoxDecoration(
+                color: MyColor.GREY_COLOR,
+                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                image: DecorationImage(
+                  image: NetworkImage(car!.carUrlImg!),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
+            MyFavoriteBadge(car: car!, userID: userID,),
+          ],
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
