@@ -22,4 +22,6 @@ class AppSTR {
 
   static const DELETE = "Supprimer";
   static const DELETE_SUCCESS = "Suppression effectuée avec succès";
+
+  static const String NO_INTERNET = "Aucune connexion Internet";
 }

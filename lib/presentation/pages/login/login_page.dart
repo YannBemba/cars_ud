@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cars_ud/config/app_str.dart';
 import 'package:cars_ud/config/colors.dart';
+import 'package:cars_ud/presentation/widgets/show_snackbar.dart';
 import 'package:cars_ud/utils/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                   _buildGoogleSignButton(
                     context,
                     title: AppSTR.GOOGLE_SIGN,
-                    onTap: () => signIn(),
+                    onTap: () => signIn(context),
                   ),
                 ],
               ),
@@ -70,11 +73,18 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  signIn() {
-    setState(() {
-      inLoginProcess = true;
-      AuthService().signInWithGoogle();
-    });
+  Future signIn(BuildContext context) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if(result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        setState(() {
+          inLoginProcess = true;
+          AuthService().signInWithGoogle();
+        });
+      }
+    } on SocketException catch(_) {
+      showNotification(context, AppSTR.NO_INTERNET);
+    }
   }
 
   Widget _buildGoogleSignButton(BuildContext context, {

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cars_ud/config/app_str.dart';
 import 'package:cars_ud/presentation/widgets/show_card_dialog.dart';
+import 'package:cars_ud/presentation/widgets/show_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -78,8 +81,15 @@ class AddCarSection extends StatelessWidget {
     );
   }
 
-  void showCarDialog(BuildContext context, User? user) {
-    CarDialog(user: user).showCarDialog(context, ImageSource.gallery);
+  Future showCarDialog(BuildContext context, User? user) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if(result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        CarDialog(user: user).showCarDialog(context, ImageSource.gallery);
+      }
+    } on SocketException catch(_) {
+      showNotification(context, AppSTR.NO_INTERNET);
+    }
   }
 
 }

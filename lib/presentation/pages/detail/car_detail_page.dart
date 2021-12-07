@@ -36,12 +36,17 @@ class CarDetailPage extends StatelessWidget {
               : Container()
         ],
       ),
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            color: MyColor.PRIMARY_COLOR,
-            image: DecorationImage(
-                image: NetworkImage(car.carUrlImg!)
+      body: InteractiveViewer(
+        child: Hero(
+          tag: car.carName!,
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: MyColor.PRIMARY_COLOR,
+                image: DecorationImage(
+                  image: NetworkImage(car.carUrlImg!),
+                ),
+              ),
             ),
           ),
         ),
@@ -64,7 +69,7 @@ class CarDetailPage extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pop();
               DatabaseService().deleteCar(car.carID);
-              showNotification(context, AppSTR.DELETE_SUCCESS.);
+              showNotification(context, AppSTR.DELETE_SUCCESS);
             },
             child: const Text(AppSTR.DELETE),
           ),
