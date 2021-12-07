@@ -105,5 +105,7 @@ class DatabaseService {
     });
   }
 
+  Future<void> deleteCar(String? carID) => _cars.doc(carID).delete();
+
 
 }

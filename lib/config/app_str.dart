@@ -19,4 +19,7 @@ class AppSTR {
   static const CANCEL_TEXT = "Annuler";
   static const PUBLISH_TEXT = "Publier";
   static const FAVORITE_CAR = "Vos voitures favories";
+
+  static const DELETE = "Supprimer";
+  static const DELETE_SUCCESS = "Suppression effectuée avec succès";
 }

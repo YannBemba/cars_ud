@@ -1,5 +1,8 @@
+import 'package:cars_ud/config/app_str.dart';
 import 'package:cars_ud/config/colors.dart';
 import 'package:cars_ud/data/models/car.dart';
+import 'package:cars_ud/presentation/widgets/show_snackbar.dart';
+import 'package:cars_ud/utils/services/db_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,7 +32,7 @@ class CarDetailPage extends StatelessWidget {
         ),
         actions: [
           car.carUserID == _userID
-              ? IconButton(onPressed: () {}, icon: const Icon(Icons.delete),)
+              ? IconButton(onPressed: () => onDeleteCar(context, car), icon: const Icon(Icons.delete),)
               : Container()
         ],
       ),
@@ -45,4 +48,29 @@ class CarDetailPage extends StatelessWidget {
       ),
     );
   }
+
+  void onDeleteCar(BuildContext context, Car? car) {
+    showDialog(context: context, builder: (context) {
+      return AlertDialog(
+        content: Text(
+          'Voulez-vous supprimer votre ${car!.carName}',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text(AppSTR.CANCEL_TEXT),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              DatabaseService().deleteCar(car.carID);
+              showNotification(context, AppSTR.DELETE_SUCCESS.);
+            },
+            child: const Text(AppSTR.DELETE),
+          ),
+        ],
+      );
+    },);
+  }
+
 }
