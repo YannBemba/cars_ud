@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:cars_ud/config/app_str.dart';
 import 'package:cars_ud/config/colors.dart';
 import 'package:cars_ud/data/models/car.dart';
-import 'package:cars_ud/presentation/pages/shared-ui/show_snackbar.dart';
+import 'package:cars_ud/presentation/widgets/show_snackbar.dart';
 import 'package:cars_ud/utils/services/db_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';

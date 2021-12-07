@@ -1,6 +1,8 @@
+import 'package:cars_ud/data/models/car.dart';
 import 'package:cars_ud/presentation/pages/login/login_page.dart';
 import 'package:cars_ud/presentation/pages/profile/profile_page.dart';
 import 'package:cars_ud/utils/services/auth_service.dart';
+import 'package:cars_ud/utils/services/db_service.dart';
 import 'package:cars_ud/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +22,14 @@ void main() async {
           initialData: null,
           value: AuthService().user,
         ),
+        StreamProvider<List<Car>>.value(
+          initialData: const [],
+          value: DatabaseService().cars,
+        )
       ],
       child: const Wrapper(),
     ),
+
   );
 }
 

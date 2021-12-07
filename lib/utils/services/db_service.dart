@@ -29,4 +29,22 @@ class DatabaseService {
     });
   }
 
+  // get all cars
+  Stream<List<Car>> get cars {
+    Query queryCars = _cars.orderBy('carTimestamp', descending: true);
+    return queryCars.snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return Car(
+          carID: doc.id,
+          carName: doc.get('carName'),
+          carUrlImg: doc.get('carUrlImg'),
+          carUserID: doc.get('carUserID'),
+          carUsername: doc.get('carUsername'),
+          carFavoriteCount: doc.get('carFavoriteCount')
+        );
+      }).toList();
+    });
+  }
+
+
 }

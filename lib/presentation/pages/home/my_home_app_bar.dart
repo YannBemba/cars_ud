@@ -12,11 +12,11 @@ class MyHomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: const Text(AppSTR.APP_NAME, style: TextStyle(
+      title: const Icon(
+        Icons.grid_view_rounded,
+        size: 35,
         color: MyColor.PRIMARY_COLOR,
-        fontWeight: FontWeight.w500,
-        fontSize: 24.0,
-      ),),
+      ),
       elevation: .8,
       floating: true,
       toolbarHeight: 75,
