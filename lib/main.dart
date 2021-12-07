@@ -1,4 +1,6 @@
 import 'package:cars_ud/data/models/car.dart';
+import 'package:cars_ud/presentation/pages/detail/car_detail_page.dart';
+import 'package:cars_ud/presentation/pages/home/home_page.dart';
 import 'package:cars_ud/presentation/pages/login/login_page.dart';
 import 'package:cars_ud/presentation/pages/profile/profile_page.dart';
 import 'package:cars_ud/utils/services/auth_service.dart';
@@ -38,14 +40,18 @@ class CarsUDApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Map<String, WidgetBuilder> routes = {
+      '/': (context) => const Wrapper(),
+      '/profile': (context) => const ProfilePage(),
+      '/detail': (context) => const CarDetailPage()
+    };
+
     return MaterialApp(
       title: 'CarsUD',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: {
-        '/': (context) => const Wrapper(),
-        '/profile': (context) => const ProfilePage()
-      },
+      routes: routes,
       theme: ThemeData(
         primarySwatch: Colors.orange,
         primaryColor: MyColor.WHITE_COLOR,

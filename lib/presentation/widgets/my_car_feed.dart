@@ -19,17 +19,20 @@ class MyCarFeed extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.35,
-              margin: const EdgeInsets.symmetric(
-                horizontal: 8.0,
-              ),
-              decoration: BoxDecoration(
-                color: MyColor.GREY_COLOR,
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                image: DecorationImage(
-                  image: NetworkImage(car!.carUrlImg!),
-                  fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () => Navigator.pushNamed(context, '/detail', arguments: car!),
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.35,
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ),
+                decoration: BoxDecoration(
+                  color: MyColor.GREY_COLOR,
+                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                  image: DecorationImage(
+                    image: NetworkImage(car!.carUrlImg!),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
