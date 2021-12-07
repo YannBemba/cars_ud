@@ -16,7 +16,7 @@ class AppSTR {
   static const ERROR_ALERT_TEXT = "Veillez fournir le nom de la voiture";
   static const NAME_OF_CAR = "Nom de la voiture";
 
-  static const String CANCEL_TEXT = "Annuler";
-
-  static const String PUBLISH_TEXT = "Publier";
+  static const CANCEL_TEXT = "Annuler";
+  static const PUBLISH_TEXT = "Publier";
+  static const FAVORITE_CAR = "Vos voitures favories";
 }

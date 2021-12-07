@@ -8,7 +8,8 @@ import 'package:provider/provider.dart';
 class MyCarList extends StatelessWidget {
 
   final String? userID;
-  const MyCarList({Key? key, this.userID}) : super(key: key);
+  final String? pageName;
+  const MyCarList({Key? key, this.userID, this.pageName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,11 @@ class MyCarList extends StatelessWidget {
         return StreamBuilder(
           stream: DatabaseService(userID: userID, carID: _cars[index].carID).myFavoriteCar,
           builder: (context, snapshot) {
+            if(pageName == 'Profile') {
+              if(!snapshot.hasData) return Container();
+              _cars[index].isMyFavoritedCar = true;
+              return MyCarFeed(car: _cars[index], userID: userID,);
+            }
             if(!snapshot.hasData) {
               _cars[index].isMyFavoritedCar = false;
               return MyCarFeed(car: _cars[index], userID: userID,);

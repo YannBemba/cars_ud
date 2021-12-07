@@ -25,34 +25,34 @@ class MyProfileAppBar extends StatelessWidget {
           child: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [MyColor.WHITE_COLOR, MyColor.TRANSPARENT_COLOR],
+                colors: [MyColor.PRIMARY_COLOR, MyColor.TRANSPARENT_COLOR],
                 begin: Alignment.bottomRight,
               ),
             ),
           ),
         ),
         title: RichText(
-          textAlign: TextAlign.right,
+          textAlign: TextAlign.start,
           text: TextSpan(
             children: [
               TextSpan(
-                  text: '${user!.displayName}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2
-                      ?.copyWith(color: MyColor.PRIMARY_COLOR)
+                text: '${user!.displayName}\n',
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
               TextSpan(
                   text: '${user!.email}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2
-                      ?.copyWith(color: MyColor.PRIMARY_COLOR)
+                  style: const TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w500,
+                  ),
               ),
             ],
           ),
         ),
-        titlePadding: const EdgeInsets.only(left: 46.0, bottom: 8.0),
+        titlePadding: const EdgeInsets.only(left: 26.0, bottom: 20.0),
       ),
       actions: [
         IconButton(

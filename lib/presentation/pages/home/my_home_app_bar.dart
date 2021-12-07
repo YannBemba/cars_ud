@@ -1,5 +1,6 @@
 import 'package:cars_ud/config/app_str.dart';
 import 'package:cars_ud/config/colors.dart';
+import 'package:cars_ud/presentation/pages/profile/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,10 @@ class MyHomeAppBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: GestureDetector(
-            onTap: () => Navigator.of(context).pushNamed('/profile'),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ProfilePage(),
+                )),
             child: CircleAvatar(
               backgroundColor: MyColor.GREY_COLOR,
               backgroundImage: NetworkImage(user!.photoURL!),
