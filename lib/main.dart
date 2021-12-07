@@ -40,6 +40,7 @@ class CarsUDApp extends StatelessWidget {
         '/profile': (context) => const ProfilePage()
       },
       theme: ThemeData(
+        primarySwatch: Colors.orange,
         primaryColor: MyColor.WHITE_COLOR,
         textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme,),
         appBarTheme: const AppBarTheme(backgroundColor: MyColor.WHITE_COLOR)
